@@ -6,6 +6,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class SecondPageState extends State<SecondPage> {
+  double iconSize = 50.0;
   bool toggle = true;
 
   @override
@@ -14,13 +15,19 @@ class SecondPageState extends State<SecondPage> {
       appBar: new AppBar(
         title: new Text("Second Page"),
       ),
-      body: new Center(
-        child: getChild(),
+      body: new ListView(
+        children: <Widget>[
+          new FlutterLogo(
+            size: iconSize,
+          ),
+          getChild(),
+        ],
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
           setState(() {
             toggle = !toggle;
+            iconSize += 20;
           });
         },
         child: new Icon(Icons.update),

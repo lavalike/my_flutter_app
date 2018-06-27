@@ -10,6 +10,7 @@ class Application extends StatelessWidget {
       title: "Welcome to Flutter",
       theme: new ThemeData(
         primaryColor: Colors.teal,
+        primarySwatch: Colors.blue,
       ),
       home: new HomePage(),
     );
