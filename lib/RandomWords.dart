@@ -1,6 +1,12 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/randomwords/RandomWords.dart';
+
+class RandomWords extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new RandomWordsState();
+  }
+}
 
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
@@ -21,37 +27,33 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   void _pushSaved() {
-    Navigator.of(context).push(
-        new MaterialPageRoute(
-            builder: (context) {
-              final tiles = _saved.map((pair) {
-                return new ListTile(
-                  title: new Text(pair.asPascalCase, style: _biggerFont,),
-                );
-              }
-              );
-              final divided = ListTile.divideTiles(
-                  context: context, tiles: tiles)
-                  .toList();
-              return new Scaffold(
-                appBar: new AppBar(
-                  title: new Text("Saved Suggestions"),
-                ),
-                body: new ListView(
-                  children: divided,
-                ),
-              );
-            }
-        )
-    );
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      final tiles = _saved.map((pair) {
+        return new ListTile(
+          title: new Text(
+            pair.asPascalCase,
+            style: _biggerFont,
+          ),
+        );
+      });
+      final divided =
+          ListTile.divideTiles(context: context, tiles: tiles).toList();
+      return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Saved Suggestions"),
+        ),
+        body: new ListView(
+          children: divided,
+        ),
+      );
+    }));
   }
 
   Widget _buildSuggestions() {
     return new ListView.builder(
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, i) {
-        if (i.isOdd)
-          return new Divider();
+        if (i.isOdd) return new Divider();
         final index = i ~/ 2;
         if (index >= _suggestions.length) {
           _suggestions.addAll(generateWordPairs().take(10));
@@ -83,5 +85,4 @@ class RandomWordsState extends State<RandomWords> {
       },
     );
   }
-
 }

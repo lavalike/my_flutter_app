@@ -85,7 +85,7 @@ class ListViewPageState extends State<ListViewPage> {
           height: 150.0,
         ),
         new Text(items[index],
-            style: new TextStyle(fontSize: 50.0, color: Colors.white))
+            style: new TextStyle(fontSize: 50.0, color: Colors.white)),
       ],
     );
   }
@@ -239,10 +239,8 @@ class ListViewPageState extends State<ListViewPage> {
   }
 
   Widget buildDivider(index) {
-    double dividerHeight = 8.0;
-    if (index >= items.length - 1) dividerHeight = 0.0;
     return new Divider(
-      height: dividerHeight,
+      height: index >= items.length - 1 ? 0.0 : 8.0,
     );
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/ComponentPage.dart';
+import 'package:my_flutter_app/DetailPage.dart';
+import 'package:my_flutter_app/ListViewPage.dart';
+import 'package:my_flutter_app/RandomWords.dart';
 import 'package:my_flutter_app/SecondPage.dart';
-import 'package:my_flutter_app/detail/DetailPage.dart';
-import 'package:my_flutter_app/listview/ListViewPage.dart';
-import 'package:my_flutter_app/randomwords/RandomWords.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,21 +23,34 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(
-            "Flutter",
-          ),
+      appBar: new AppBar(
+        title: new Text(
+          "Flutter",
         ),
-        body: buildBody());
+      ),
+      body: buildBody(),
+    );
   }
 
   Widget buildBody() {
-    return new GridView.extent(
-      maxCrossAxisExtent: 150.0,
+    return new GridView.count(
+      crossAxisCount: 3,
       padding: new EdgeInsets.all(4.0),
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
       children: <Widget>[
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (context) => new ComponentPage()));
+          },
+          child: new Text(
+            "Component",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
         new RaisedButton(
           shape: gridItemShape,
           onPressed: () {
