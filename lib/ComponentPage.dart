@@ -22,16 +22,13 @@ class ComponentPageState extends State<ComponentPage> {
 
   int currentStep = 0;
 
+  TextEditingController _textController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Component"),
-        leading: new IconButton(
-            icon: new Icon(Icons.backspace),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
       ),
       body: new ListView(
         children: <Widget>[
@@ -39,6 +36,7 @@ class ComponentPageState extends State<ComponentPage> {
           buildRadio(),
           buildCheckBox(),
           buildSwitch(),
+          buildTextField(),
           buildSlider(),
           buildTimePicker(),
           buildDialog(),
@@ -421,5 +419,47 @@ class ComponentPageState extends State<ComponentPage> {
         ),
       ],
     );
+  }
+
+  Widget buildTextField() {
+    return new Container(
+      padding: new EdgeInsets.all(10.0),
+      margin: new EdgeInsets.all(10.0),
+      decoration: new BoxDecoration(
+        border: Border.all(color: Colors.blue, width: 0.5),
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.only(
+            topLeft: new Radius.circular(15.0),
+            bottomRight: new Radius.circular(15.0)),
+      ),
+      child: new TextField(
+        controller: _textController,
+        onSubmitted: (value) {
+          showInfoDialog("the input value is $value");
+          _textController.clear();
+        },
+        decoration: new InputDecoration.collapsed(hintText: "TextField"),
+      ),
+    );
+  }
+
+  ///
+  /// 通用对话框
+  ///
+  void showInfoDialog(String value) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return new AlertDialog(
+            content: new Text(value),
+            actions: <Widget>[
+              new FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: new Text("朕知道了")),
+            ],
+          );
+        });
   }
 }

@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/ComponentPage.dart';
 import 'package:my_flutter_app/DetailPage.dart';
+import 'package:my_flutter_app/HttpPage.dart';
 import 'package:my_flutter_app/ListViewPage.dart';
 import 'package:my_flutter_app/RandomWords.dart';
 import 'package:my_flutter_app/SecondPage.dart';
+import 'package:my_flutter_app/WebSocketsPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,8 +26,16 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(
-          "Flutter",
+        title: new Row(
+          children: <Widget>[
+            new Icon(Icons.android),
+            new Padding(
+              padding: new EdgeInsets.only(left: 10.0),
+              child: new Text(
+                "Flutter",
+              ),
+            ),
+          ],
         ),
       ),
       body: buildBody(),
@@ -39,6 +49,30 @@ class HomePageState extends State<HomePage> {
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
       children: <Widget>[
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (context) => new WebSocketsPage()));
+          },
+          child: new Text(
+            "WebSockets",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
+            Navigator.of(context).push(
+                new MaterialPageRoute(builder: (context) => new HttpPage()));
+          },
+          child: new Text(
+            "http",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
         new RaisedButton(
           shape: gridItemShape,
           onPressed: () {
