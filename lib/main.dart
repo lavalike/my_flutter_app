@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/HomePage.dart';
+import 'package:my_flutter_app/RoutePage.dart';
 
 void main() => runApp(new Application());
 
@@ -12,6 +13,11 @@ class Application extends StatelessWidget {
         primaryColor: Colors.teal,
       ),
       home: new HomePage(),
+      routes: <String, WidgetBuilder>{
+        "/a": (BuildContext context) => new RouteResultPage("Page A"),
+        "/b": (BuildContext context) => new RouteResultPage("Page B"),
+        "/c": (BuildContext context) => new RouteResultPage("Page C"),
+      },
     );
   }
 }

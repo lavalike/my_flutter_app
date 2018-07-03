@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/AnimationPage.dart';
 import 'package:my_flutter_app/ComponentPage.dart';
 import 'package:my_flutter_app/DetailPage.dart';
 import 'package:my_flutter_app/HttpPage.dart';
 import 'package:my_flutter_app/ListViewPage.dart';
 import 'package:my_flutter_app/RandomWords.dart';
+import 'package:my_flutter_app/RoutePage.dart';
 import 'package:my_flutter_app/SecondPage.dart';
 import 'package:my_flutter_app/WebSocketsPage.dart';
 
@@ -49,6 +51,30 @@ class HomePageState extends State<HomePage> {
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
       children: <Widget>[
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
+            Navigator.of(context).push(
+                new MaterialPageRoute(builder: (context) => new RoutePage()));
+          },
+          child: new Text(
+            "路由Routes",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (context) => new AnimationPage()));
+          },
+          child: new Text(
+            "Animation",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
         new RaisedButton(
           shape: gridItemShape,
           onPressed: () {
