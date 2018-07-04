@@ -7,15 +7,16 @@ class AnimationPage extends StatefulWidget {
 
 class AnimationPageState extends State<AnimationPage>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  CurvedAnimation curve;
+  AnimationController fadeController;
+  CurvedAnimation fadeCurve;
 
   @override
   void initState() {
     super.initState();
-    controller = new AnimationController(
+    fadeController = new AnimationController(
         duration: new Duration(milliseconds: 2000), vsync: this);
-    curve = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    fadeCurve =
+        new CurvedAnimation(parent: fadeController, curve: Curves.easeIn);
   }
 
   @override
@@ -24,21 +25,48 @@ class AnimationPageState extends State<AnimationPage>
       appBar: new AppBar(
         title: new Text("Animation"),
       ),
-      body: new Center(
-        child: new Container(
-          child: new FadeTransition(
-            opacity: curve,
-            child: new FlutterLogo(
-              size: 100.0,
-            ),
+      body: new Column(
+        children: <Widget>[
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              new FadeTransition(
+                opacity: fadeCurve,
+                child: new FlutterLogo(
+                  size: 100.0,
+                ),
+              ),
+              new RaisedButton(
+                onPressed: () {
+                  fadeController.forward();
+                },
+                child: new Text("Fade"),
+              )
+            ],
           ),
-        ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              new RotationTransition(
+                turns: fadeCurve,
+                child: new FlutterLogo(
+                  size: 100.0,
+                ),
+              ),
+              new RaisedButton(
+                onPressed: () {
+                  if (fadeController.isCompleted) {
+                    fadeController.reverse();
+                  } else {
+                    fadeController.forward();
+                  }
+                },
+                child: new Text("Rotation"),
+              )
+            ],
+          ),
+        ],
       ),
-      floatingActionButton: new FloatingActionButton(
-          child: new Icon(Icons.brush),
-          onPressed: () {
-            controller.forward();
-          }),
     );
   }
 }

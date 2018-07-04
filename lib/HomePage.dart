@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter_app/AnimationPage.dart';
 import 'package:my_flutter_app/ComponentPage.dart';
 import 'package:my_flutter_app/DetailPage.dart';
+import 'package:my_flutter_app/HttpListViewPage.dart';
 import 'package:my_flutter_app/HttpPage.dart';
+import 'package:my_flutter_app/LifecyclePage.dart';
 import 'package:my_flutter_app/ListViewPage.dart';
 import 'package:my_flutter_app/RandomWords.dart';
 import 'package:my_flutter_app/RoutePage.dart';
@@ -54,6 +56,18 @@ class HomePageState extends State<HomePage> {
         new RaisedButton(
           shape: gridItemShape,
           onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (context) => new LifecyclePage()));
+          },
+          child: new Text(
+            "Lifecycle",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
             Navigator.of(context).push(
                 new MaterialPageRoute(builder: (context) => new RoutePage()));
           },
@@ -90,11 +104,23 @@ class HomePageState extends State<HomePage> {
         new RaisedButton(
           shape: gridItemShape,
           onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (context) => new HttpListViewPage()));
+          },
+          child: new Text(
+            "http->List",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
             Navigator.of(context).push(
                 new MaterialPageRoute(builder: (context) => new HttpPage()));
           },
           child: new Text(
-            "http",
+            "http->Future",
             style: gridItemTextColor,
           ),
           color: gridItemColor,
