@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/HomePage.dart';
-import 'package:my_flutter_app/RoutePage.dart';
+import 'package:my_flutter_app/home_page.dart';
+import 'package:my_flutter_app/route_page.dart';
 
 void main() => runApp(new Application());
 
