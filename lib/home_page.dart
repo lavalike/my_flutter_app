@@ -4,6 +4,7 @@ import 'package:my_flutter_app/animation_page.dart';
 import 'package:my_flutter_app/call_android_page.dart';
 import 'package:my_flutter_app/component_page.dart';
 import 'package:my_flutter_app/detail_page.dart';
+import 'package:my_flutter_app/dio_page.dart';
 import 'package:my_flutter_app/fonts_page.dart';
 import 'package:my_flutter_app/http_listview_page.dart';
 import 'package:my_flutter_app/http_page.dart';
@@ -136,6 +137,18 @@ class HomePageState extends State<HomePage> {
           },
           child: new Text(
             "WebSockets",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
+            Navigator.of(context).push(
+                new MaterialPageRoute(builder: (context) => new DioPage()));
+          },
+          child: new Text(
+            "dio",
             style: gridItemTextColor,
           ),
           color: gridItemColor,
