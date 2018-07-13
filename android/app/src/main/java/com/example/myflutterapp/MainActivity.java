@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugin.common.MethodCall;
@@ -35,6 +36,8 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
             } else {
                 result.error("UNAVAILABLE", "Battery level not available.", null);
             }
+        } else if (methodCall.method.equals("showToast")) {
+            showToast(String.valueOf(methodCall.arguments));
         } else {
             result.notImplemented();
         }
@@ -53,5 +56,9 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
         }
 
         return batteryLevel;
+    }
+
+    private void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

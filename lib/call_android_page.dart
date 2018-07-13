@@ -39,8 +39,13 @@ class CallAndroidState extends State<CallAndroidPage> {
     } on PlatformException catch (e) {
       batteryLevel = "Wrong battery level --> ${e.message}";
     }
+    showToast(batteryLevel);
     setState(() {
       _batteryLevel = batteryLevel;
     });
+  }
+
+  void showToast(String msg) async {
+    await platform.invokeMethod("showToast", msg);
   }
 }
