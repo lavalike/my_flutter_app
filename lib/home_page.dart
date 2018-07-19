@@ -8,6 +8,7 @@ import 'package:my_flutter_app/dio_page.dart';
 import 'package:my_flutter_app/fonts_page.dart';
 import 'package:my_flutter_app/http_listview_page.dart';
 import 'package:my_flutter_app/http_page.dart';
+import 'package:my_flutter_app/intrinsic_page.dart';
 import 'package:my_flutter_app/lifecycle_page.dart';
 import 'package:my_flutter_app/listview_page.dart';
 import 'package:my_flutter_app/random_words.dart';
@@ -57,6 +58,18 @@ class HomePageState extends State<HomePage> {
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
       children: <Widget>[
+        new RaisedButton(
+          shape: gridItemShape,
+          onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (context) => new IntrinsicPage()));
+          },
+          child: new Text(
+            "Instrinsic",
+            style: gridItemTextColor,
+          ),
+          color: gridItemColor,
+        ),
         new RaisedButton(
           shape: gridItemShape,
           onPressed: () {
