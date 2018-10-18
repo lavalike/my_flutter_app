@@ -94,18 +94,18 @@ class HomePageState extends State<HomePage> {
           ),
           color: gridItemColor,
         ),
-        new RaisedButton(
-          shape: gridItemShape,
-          onPressed: () {
-            Navigator.of(context).push(new MaterialPageRoute(
-                builder: (context) => new SharedPreferencePage()));
-          },
-          child: new Text(
-            "SharedPreference",
-            style: gridItemTextColor,
-          ),
-          color: gridItemColor,
-        ),
+//        new RaisedButton(
+//          shape: gridItemShape,
+//          onPressed: () {
+//            Navigator.of(context).push(new MaterialPageRoute(
+//                builder: (context) => new SharedPreferencePage()));
+//          },
+//          child: new Text(
+//            "SharedPreference",
+//            style: gridItemTextColor,
+//          ),
+//          color: gridItemColor,
+//        ),
         new RaisedButton(
           shape: gridItemShape,
           onPressed: () {
@@ -154,18 +154,18 @@ class HomePageState extends State<HomePage> {
           ),
           color: gridItemColor,
         ),
-        new RaisedButton(
-          shape: gridItemShape,
-          onPressed: () {
-            Navigator.of(context).push(
-                new MaterialPageRoute(builder: (context) => new DioPage()));
-          },
-          child: new Text(
-            "dio",
-            style: gridItemTextColor,
-          ),
-          color: gridItemColor,
-        ),
+//        new RaisedButton(
+//          shape: gridItemShape,
+//          onPressed: () {
+//            Navigator.of(context).push(
+//                new MaterialPageRoute(builder: (context) => new DioPage()));
+//          },
+//          child: new Text(
+//            "dio",
+//            style: gridItemTextColor,
+//          ),
+//          color: gridItemColor,
+//        ),
         new RaisedButton(
           shape: gridItemShape,
           onPressed: () {
